@@ -6480,13 +6480,13 @@ void ImGui::RenderWindowTitleBarContents(ImGuiWindow* window, const ImRect& titl
         pad_r = ImMax(pad_r, pad_extend * centerness);
     }
 
-#ifdef WIN98 // windows title font
-    if (focused) PushStyleColor(ImGuiCol_Text, IM_COL32(255,255,255,255));
-    else PushStyleColor(ImGuiCol_Text, IM_COL32(192,192,192,255));
-    ImGuiIO& io = ImGui::GetIO();
-    ImFont* font = io.Fonts->Fonts[1]; // Assume the icon font is here. pretty bad
-    PushFont(font);
-#endif
+// #ifdef WIN98 // windows title font
+//     if (focused) PushStyleColor(ImGuiCol_Text, IM_COL32(255,255,255,255));
+//     else PushStyleColor(ImGuiCol_Text, IM_COL32(192,192,192,255));
+//     ImGuiIO& io = ImGui::GetIO();
+//     ImFont* font = io.Fonts->Fonts[1]; // Assume the icon font is here. pretty bad
+//     PushFont(font);
+// #endif
 
     ImRect layout_r(title_bar_rect.Min.x + pad_l, title_bar_rect.Min.y, title_bar_rect.Max.x - pad_r, title_bar_rect.Max.y);
     ImRect clip_r(layout_r.Min.x, layout_r.Min.y, ImMin(layout_r.Max.x + g.Style.ItemInnerSpacing.x, title_bar_rect.Max.x), layout_r.Max.y);
@@ -6505,10 +6505,10 @@ void ImGui::RenderWindowTitleBarContents(ImGuiWindow* window, const ImRect& titl
     //if (g.IO.KeyCtrl) window->DrawList->AddRect(clip_r.Min, clip_r.Max, IM_COL32(255, 128, 0, 255)); // [DEBUG]
     RenderTextClipped(layout_r.Min, layout_r.Max, name, NULL, &text_size, style.WindowTitleAlign, &clip_r);
 
-#ifdef WIN98
-    PopFont();
-    PopStyleColor();
-#endif
+// #ifdef WIN98
+//     PopFont();
+//     PopStyleColor();
+// #endif
 }
 
 void ImGui::UpdateWindowParentAndRootLinks(ImGuiWindow* window, ImGuiWindowFlags flags, ImGuiWindow* parent_window)
